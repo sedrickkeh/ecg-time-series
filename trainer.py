@@ -7,6 +7,7 @@ class Trainer:
     def __init__(self, model, device, loss_func, optimizer):
         self.model = model
         self.device = device
+        self.model.to(self.device)
         self.loss_func = loss_func
         self.optimizer = optimizer
 
