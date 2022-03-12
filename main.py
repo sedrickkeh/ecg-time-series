@@ -38,7 +38,6 @@ def main(args):
 
 
 if __name__== "__main__":
-    set_logger()    
     parser = argparse.ArgumentParser()
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--n_epochs", type=int, default=5)
@@ -46,7 +45,9 @@ if __name__== "__main__":
     parser.add_argument("--model", type=str, default="rnn")
     parser.add_argument("--train_path", type=str, default="data/mitbih_train.csv")
     parser.add_argument("--test_path", type=str, default="data/mitbih_test.csv")
+    parser.add_argument("--logging", action='store_true')    
     args = parser.parse_args()
+    set_logger(args.logging)    
     logging.info(args)
 
     main(args)

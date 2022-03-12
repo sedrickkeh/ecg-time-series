@@ -3,7 +3,7 @@ import sys
 import logging
 import datetime
 
-def set_logger():
+def set_logger(log_to_file):
     if not os.path.exists('./logging'):
         os.makedirs('./logging')
     
@@ -14,5 +14,6 @@ def set_logger():
         handlers=[
             logging.FileHandler(f"logging/{currtime}.log"),
             logging.StreamHandler()
-        ]
+        ] if log_to_file 
+        else [logging.StreamHandler()]
     )
