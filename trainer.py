@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from tqdm import tqdm
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report
 
 class Trainer:
     def __init__(self, model, device, loss_func, optimizer):
@@ -43,4 +43,5 @@ class Trainer:
             gtruth_arr.extend(y.detach().cpu().numpy())
 
         accuracy = accuracy_score(gtruth_arr, preds_arr)
+        print(classification_report(gtruth_arr, preds_arr, digits=5))
         return running_loss/len(valid_loader), accuracy

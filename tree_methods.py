@@ -4,7 +4,7 @@ import pandas as pd
 from utils import set_logger
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 
 def get_model(model_name, args):
     if model_name=="xgboost":
@@ -29,6 +29,7 @@ def main(args):
 
     preds = model.predict(test_x)
     accuracy = accuracy_score(test_y, preds)
+    print(classification_report(test_y, preds, digits=5))
     logging.info(f"Model: {args.model} | Accuracy: {accuracy:.5f}")
 
 
