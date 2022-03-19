@@ -5,12 +5,13 @@ import torch.nn as nn
 from dataloader import get_dataloaders
 from trainer import Trainer
 from utils import set_logger
+import models
 
 def get_model(model_name, args):
     assert(model_name in ["cnn", "rnn", "lstm"])
-    if (model_name == "cnn"): return None
-    elif (model_name == "rnn"): return nn.Linear(187, 10)
-    elif (model_name == "lstm"): return None
+    if (model_name == "cnn"): return models.CNNModel(5)
+    elif (model_name == "rnn"): return models.RNNModel(input_size=1, hidden_size=64, num_layers=3)
+    elif (model_name == "lstm"): return models.LSTMModel(input_size=1, hidden_size=64, num_layers=3)
     else: return nn.Linear(187, 10)
 
 def main(args):
