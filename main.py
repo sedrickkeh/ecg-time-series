@@ -18,7 +18,7 @@ def main(args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Load data
-    train_loader, val_loader, test_loader = get_dataloaders(args.train_path, args.test_path, args.batch_size)
+    train_loader, val_loader, test_loader = get_dataloaders(args.train_path, args.test_path, args.batch_size, args.image_transform)
 
     # Initialize model, optimizer, loss
     model = get_model(args.model, args)
@@ -44,6 +44,7 @@ if __name__== "__main__":
     parser.add_argument("--n_epochs", type=int, default=20)
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--model", type=str, default="rnn")
+    parser.add_argument("--image_transform", type=str, default="none", choices=["none", "gaf", "mtf"])
     parser.add_argument("--train_path", type=str, default="data/mitbih_train.csv")
     parser.add_argument("--test_path", type=str, default="data/mitbih_test.csv")
     parser.add_argument("--logging", action='store_true')    
