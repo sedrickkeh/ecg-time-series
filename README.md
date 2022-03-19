@@ -8,6 +8,6 @@ Train+evaluate the model by calling
 python main.py --model (model_name) --image_transform (type_of_transform) 
 ```
 
-Note: If --image_transform is "gaf" or "mtf", the --model has to be "efficientnet".
+Note: If `--image_transform` is "gaf" or "mtf", the `--model` has to be "efficientnet".
 
-Experiments are recorded inside `./logging`
+Use the `--logging` argument to keep track of experiments inside `./logging` 
