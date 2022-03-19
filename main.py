@@ -8,10 +8,11 @@ from utils import set_logger
 import models
 
 def get_model(model_name, args):
-    assert(model_name in ["cnn", "rnn", "lstm"])
+    assert(model_name in ["cnn", "rnn", "lstm", "efficientnet"])
     if (model_name == "cnn"): return models.CNNModel(5)
     elif (model_name == "rnn"): return models.RNNModel(input_size=1, hidden_size=64, num_layers=3)
     elif (model_name == "lstm"): return models.LSTMModel(input_size=1, hidden_size=64, num_layers=3)
+    elif (model_name == "efficientnet"): return models.EfficientNetModel(5)
     else: return nn.Linear(187, 10)
 
 def main(args):
@@ -43,7 +44,7 @@ if __name__== "__main__":
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--n_epochs", type=int, default=20)
     parser.add_argument("--batch_size", type=int, default=128)
-    parser.add_argument("--model", type=str, default="rnn")
+    parser.add_argument("--model", type=str, default="rnn", choices=["cnn", "rnn", "lstm", "efficientnet"])
     parser.add_argument("--image_transform", type=str, default="none", choices=["none", "gaf", "mtf"])
     parser.add_argument("--train_path", type=str, default="data/mitbih_train.csv")
     parser.add_argument("--test_path", type=str, default="data/mitbih_test.csv")
