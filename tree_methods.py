@@ -29,7 +29,7 @@ def main(args):
 
     preds = model.predict(test_x)
     accuracy = accuracy_score(test_y, preds)
-    print(classification_report(test_y, preds, digits=5))
+    logging.info(classification_report(test_y, preds, digits=5))
     logging.info(f"Model: {args.model} | Accuracy: {accuracy:.5f}")
 
 

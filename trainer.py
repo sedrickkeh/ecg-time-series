@@ -1,3 +1,4 @@
+import logging
 import numpy as np
 import torch
 from tqdm import tqdm
@@ -43,5 +44,5 @@ class Trainer:
             gtruth_arr.extend(y.detach().cpu().numpy())
 
         accuracy = accuracy_score(gtruth_arr, preds_arr)
-        print(classification_report(gtruth_arr, preds_arr, digits=5))
+        logging.info(classification_report(gtruth_arr, preds_arr, digits=5))
         return running_loss/len(valid_loader), accuracy
