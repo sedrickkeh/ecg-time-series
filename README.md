@@ -8,4 +8,9 @@ Train+evaluate the model by calling
 python main.py --model (model_name) --image_transform (type_of_transform) 
 ```
 
+For the transformer models, they are in 
+```bash
+python main-trainsformer.py
+```
+
 Use the `--logging` argument to keep track of experiments inside `./logging` 
